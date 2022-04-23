@@ -36,4 +36,4 @@
 
 ## 抢菜成果
 
-![](https://img.gejiba.com/images/de9babd23749dcbf7369bfd39b2b8253.jpg)
+https://img.gejiba.com/image/0shhM
