@@ -30,4 +30,4 @@
 
 如果看到这段文字出现在购物车，那就说明现在就算有商品加了购物车也没用
 
-![image-20220423214258906](C:\Users\Mike\AppData\Roaming\Typora\typora-user-images\image-20220423214258906.png)
+![image-20220423214258906](https://img.gejiba.com/images/ce85e5c81f1325eadda5353dbfc8c92c.png)
