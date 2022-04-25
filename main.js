@@ -448,7 +448,27 @@
   
   };
   
-  
+  function checkall() {
+   
+    const isCheckedAll = textStartsWith("结算(").exists();
+   
+    const checkAllBtn = text("全选").findOne();
+   
+    if (!!checkAllBtn) {
+     
+      !isCheckedAll && checkAllBtn.parent().click();
+     
+      sleep(1000);
+     
+    } else {
+     
+      toast("没找到全选按钮");
+     
+      exit;
+     
+    }
+   
+}
   
   const submit_order = (count) => {
   
@@ -468,7 +488,7 @@
   
     if (!textStartsWith("结算").exists()) {
   
-        log("未找到结算按钮，刷新页面");
+        log("未检测到有商品在购物车内，刷新页面");
         if(className("android.widget.TextView").text("您可能想买").findOne()){
             toast("发现有商品可以选购，延迟5秒刷新");
             sleep(5000);
@@ -483,6 +503,8 @@
   
       log("开始结算");
   
+      checkall();
+     
       let submit_btn = textStartsWith("结算").findOne();
   
       submit_btn.parent().click(); //结算按钮点击
