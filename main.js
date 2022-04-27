@@ -12,6 +12,8 @@
 
  */
 
+var jianlou = false; //false为高峰时期抢菜用，true为普通时期捡漏用
+
  function randomSwipe(sx, sy, ex, ey) {
 
     //设置随机滑动时长范围
@@ -449,25 +451,15 @@
   };
   
   function checkall() {
-   
     const isCheckedAll = textStartsWith("结算(").exists();
-   
     const checkAllBtn = text("全选").findOne();
-   
     if (!!checkAllBtn) {
-     
       !isCheckedAll && checkAllBtn.parent().click();
-     
       sleep(1000);
-     
     } else {
-     
       toast("没找到全选按钮");
-     
       exit;
-     
     }
-   
 }
   
   const submit_order = (count) => {
@@ -489,9 +481,11 @@
     if (!textStartsWith("结算").exists()) {
   
         log("未检测到有商品在购物车内，刷新页面");
-        if(className("android.widget.TextView").text("您可能想买").findOne()){
+        if (jianlou){
+          if(className("android.widget.TextView").text("您可能想买").findOne()){
             toast("发现有商品可以选购，延迟5秒刷新");
             sleep(5000);
+          }
         }
       
   
@@ -504,7 +498,6 @@
       log("开始结算");
   
       checkall();
-     
       let submit_btn = textStartsWith("结算").findOne();
   
       submit_btn.parent().click(); //结算按钮点击
